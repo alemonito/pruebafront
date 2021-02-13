@@ -14,15 +14,33 @@ if(objeto.status ==="error"){
 }
 
 
-const data = await fetchData("https://rocky-ridge-03963.herokuapp.com/login", 'POST', objeto);
+const data = await fetchData(`${url}/login`, 'POST', objeto);
 console.log(data);
+if(data.status ==="Error"){
+    return Swal.fire({
+        icon: 'error',
+        title: 'Error de Login',
+        text: data.message,
+      })
+}
 
+//
 if(data.status ==="success"){
     e.target.reset();
-    return Swal.fire({
+
+    //una vez obtenido el token se guarda en localStorage para futuras peticiones
+    localStorage.setItem("token",JSON.stringify(data.token));
+
+    Swal.fire({
         icon: 'success',
         title: 'Bienvenido',
         text: 'Inicio de Sesión Exitoso',
       })
+
+      setTimeout(()=>{
+          location.href ="usuarios.html";
+      },3000);
+
+
 }
 })

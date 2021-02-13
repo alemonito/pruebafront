@@ -29,9 +29,10 @@ const campos = (e) => {
     return objeto;
 };
 
-const fetchData = async (url, verbo = "GET", datos) => {
+//peticiones sin envio de token
+const fetchData = async (url, verbo = "GET",datos) => {
     let res;
-    console.log(verbo)
+
     // let data;
     if (
         verbo.toUpperCase() === "GET" ||
@@ -39,9 +40,10 @@ const fetchData = async (url, verbo = "GET", datos) => {
         verbo.toUpperCase() === "PUT"
     ) {
         res = await fetch(url, {
-            method: verbo.toUpperCase()
+            method: verbo.toUpperCase(),
+         
         });
-    } else {
+    } else  {
         res = await fetch(url, {
             method: verbo.toUpperCase(),
             headers: {
@@ -54,3 +56,37 @@ const fetchData = async (url, verbo = "GET", datos) => {
     const data = await res.json();
     return data;
 };
+
+//peticiones http con envio de token
+const fetchDataToken = async (url, verbo = "GET",token="",datos) => {
+    let res;
+
+    // let data;
+    if (
+        verbo.toUpperCase() === "GET" ||
+        verbo.toUpperCase() === "DELETE" ||
+        verbo.toUpperCase() === "PUT" && authorization
+    ) {
+        res = await fetch(url, {
+            method: verbo.toUpperCase(),
+            headers:{
+                "authorization":`Bearer ${token}`
+            }
+         
+        });
+    } else if(authorization) {
+        res = await fetch(url, {
+            method: verbo.toUpperCase(),
+            headers: {
+                "authorization":`Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(datos),
+        });
+    }
+
+    const data = await res.json();
+    return data;
+};
+
+const url = "https://rocky-ridge-03963.herokuapp.com";
