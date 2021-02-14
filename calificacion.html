@@ -7,20 +7,35 @@
     <title>Document</title>
 </head>
 <body>
-    
+
+    <table border="1" id="estudiantes">
+        <tr>
+            <th>Alumno</th>
+            <th>Acciones</th>
+        </tr>
+        <!--<tr>
+            <td>Dato 1</td>
+            <td>Dato 2</td>
+        </tr>-->
+    </table>
+
+
 <form action="#" id="calificacion">
     <input type="text" name="calificacion" id="calificacion" placeholder="calificacion">
-    <select name=""id="cuatrimestre" >
+    <select name="" id="cuatrimestre" >
         <option value="" >seleccionar un cuatrimestre</option>
     </select>
     <select name="" id="maestro">
-        <option value="" disabled>Seleccionar un maestro</option>
+        <option value="">Seleccionar un maestro</option>
     </select>
-
-    <input type="text" id="alumno">
-
+    <select name="" id="materia" >
+        <option value="" >seleccionar la materia</option>
+    </select>
+    <input type="hidden" name="alumno" id="alumno">
     <input type="submit" value="enviar">
+    
 </form>
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="Funciones.js"></script>
@@ -29,11 +44,3 @@
 </html>
 
 
-
-<!-- 
-<ul>
-<li>  <a href="#" data-id=""></a> ale koso rodriguez  </li>
-<li>  topoyovasbas arduino mendoza </li>
-<li>  topoyovasbas arduino mendoza </li>
-
-</ul> -->

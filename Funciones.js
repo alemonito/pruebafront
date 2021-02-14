@@ -65,7 +65,7 @@ const fetchDataToken = async (url, verbo = "GET",token="",datos) => {
     if (
         verbo.toUpperCase() === "GET" ||
         verbo.toUpperCase() === "DELETE" ||
-        verbo.toUpperCase() === "PUT" && authorization
+        verbo.toUpperCase() === "PUT" 
     ) {
         res = await fetch(url, {
             method: verbo.toUpperCase(),
@@ -74,7 +74,7 @@ const fetchDataToken = async (url, verbo = "GET",token="",datos) => {
             }
          
         });
-    } else if(authorization) {
+    } else{
         res = await fetch(url, {
             method: verbo.toUpperCase(),
             headers: {
