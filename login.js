@@ -38,7 +38,7 @@ if(data.status ==="success"){
       })
 
       setTimeout(()=>{
-          location.href ="usuarios.html";
+          location.href ="index.html";
       },3000);
 
 
